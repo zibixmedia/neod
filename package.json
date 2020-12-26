@@ -1,4 +1,10 @@
 {
     "name": "@zibix/neod",
-    "version": "1.0.0"
+    "version": "1.0.1",
+    "description": "Neo4j Connector and result formatter",
+    "license": "MIT",
+    "repository": "zibixmedia/neod",
+    "keywords": [
+        "neo4j"
+    ]
 }
