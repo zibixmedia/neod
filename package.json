@@ -1,14 +1,14 @@
 {
     "name": "@zibix/neod",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "Neo4j Connection & Session manager. Formats Results",
     "license": "MIT",
-    "repository": "zibixmedia/neod",
+    "repository": "https://github.com/zibixmedia/neod",
     "main": "main.js",
     "keywords": [
         "neo4j"
     ],
     "dependencies": {
-        "neo4j-driver": "^4.1"
+        "neo4j-driver": "^4.2.1"
     }
 }
