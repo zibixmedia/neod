@@ -1,3 +1,7 @@
+# 1.1.5 / 2021-05-28
+
+- Added Neo4j All Temporal Object Support
+
 # 1.1.4 / 2021-05-16
 
 - Added Neo4j Temporal Datetime Object Support

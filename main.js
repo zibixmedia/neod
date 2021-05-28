@@ -282,25 +282,28 @@
      
      
      scrubRabbitHole(results) {
- 
          
-         if(temporaltypes.isDateTime(results)){
- 
+         if(temporaltypes.isDateTime(results) || temporaltypes.isDate(results) || temporaltypes.isLocalTime(results) || temporaltypes.isLocalDateTime(results) || temporaltypes.isTime(results)){
+            
              let temporal = {}
              Object.keys(results).forEach((key) => {
                  temporal[key] = this.scrubRabbitHole(results[key])
              })
-             temporal['unixTZO'] = Date.UTC(
-                 temporal['year'], // year
-                 temporal['month'] - 1, // month
-                 temporal['day'], // day
-                 temporal['hour'], // hour
-                 temporal['minute'], // minute
-                 temporal['second'], // second
-                 temporal['nanosecond'] / 1000000
-             )
-             temporal['unixUTC'] = temporal['unixTZO'] - (temporal['timeZoneOffsetSeconds'] * 1000)
-             return temporal
+             
+            if(temporaltypes.isDateTime(results) || temporaltypes.isDate(results) || temporaltypes.isLocalDateTime(results)){
+                temporal['unixTZO'] = Date.UTC(
+                    temporal['year'], // year
+                    temporal['month'] - 1, // month
+                    temporal['day'], // day
+                    temporal['hour']??0, // hour
+                    temporal['minute']??0, // minute
+                    temporal['second']??0, // second
+                    temporal['nanosecond']??0 / 1000000
+                )
+                temporal['unixUTC'] = temporal['unixTZO'] - ((temporal['timeZoneOffsetSeconds']??0) * 1000)
+            }
+            
+            return temporal
          }
  
          // IS IT A NODE
