@@ -7,6 +7,7 @@
  * https://github.com/zibixmedia/neod
  *
  * Copyright (c) 2020 Eric Wiltshire
+ * eric@zibixmedia.com
  * MIT License - http://opensource.org/licenses/mit-license.php
  *
  */
@@ -290,15 +291,15 @@
                  temporal[key] = this.scrubRabbitHole(results[key])
              })
              
-            if(temporaltypes.isDateTime(results) || temporaltypes.isDate(results) || temporaltypes.isLocalDateTime(results)){
+             if(temporaltypes.isDateTime(results) || temporaltypes.isDate(results) || temporaltypes.isLocalDateTime(results)){
                 temporal['unixTZO'] = Date.UTC(
                     temporal['year'], // year
                     temporal['month'] - 1, // month
                     temporal['day'], // day
-                    temporal['hour']??0, // hour
-                    temporal['minute']??0, // minute
-                    temporal['second']??0, // second
-                    temporal['nanosecond']??0 / 1000000
+                    (temporal['hour']??0), // hour
+                    (temporal['minute']??0), // minute
+                    (temporal['second']??0), // second
+                    (temporal['nanosecond']??0) / 1000000
                 )
                 temporal['unixUTC'] = temporal['unixTZO'] - ((temporal['timeZoneOffsetSeconds']??0) * 1000)
             }

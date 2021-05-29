@@ -1,3 +1,7 @@
+# 1.1.6 / 2021-05-29
+
+- Fixed a bug in temporal date objects
+
 # 1.1.5 / 2021-05-28
 
 - Added Neo4j All Temporal Object Support
