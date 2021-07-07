@@ -4,17 +4,18 @@
  * Scrubs results into clean response objects
  * parses bitints into strings for javascript
  * 
- * https://github.com/zibixmedia/neod
+ * homepage: https://neo4j-enthusiasts.openhours.app/home
+ * repository: https://github.com/zibixmedia/neod
  *
- * Copyright (c) 2020 Eric Wiltshire
+ * Copyright (c) 2021 Eric Wiltshire
  * eric@zibixmedia.com
  * MIT License - http://opensource.org/licenses/mit-license.php
  *
  */
 
  const neo4jdriver = require('neo4j-driver')
- const graphtypes = require('neo4j-driver/lib/graph-types.js')
- const temporaltypes = require('neo4j-driver/lib/temporal-types.js')
+ const graphtypes = require('neo4j-driver-core/lib/graph-types.js')
+ const temporaltypes = require('neo4j-driver-core/lib/temporal-types.js')
  
  class neod {
  
@@ -284,7 +285,7 @@
      
      scrubRabbitHole(results) {
          
-         if(temporaltypes.isDateTime(results) || temporaltypes.isDate(results) || temporaltypes.isLocalTime(results) || temporaltypes.isLocalDateTime(results) || temporaltypes.isTime(results)){
+         if(temporaltypes.isDateTime(results) || temporaltypes.isDate(results) || temporaltypes.isLocalTime(results) || temporaltypes.isLocalDateTime(results) || temporaltypes.isTime(results) || temporaltypes.isDuration(results)){
             
              let temporal = {}
              Object.keys(results).forEach((key) => {

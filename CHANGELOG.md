@@ -1,3 +1,14 @@
+# 1.1.9 / 2021-07-07
+
+- Updated neo4j dependency to 4.3.1
+- Added Temporal Duration Support
+- Changed Homepage to : https://neo4j-enthusiasts.openhours.app/home
+
+# 1.1.8 / 2021-06-04
+
+- Updated neo4j dependency to 4.3.0
+- Redirected to new CORE library
+
 # 1.1.6 / 2021-05-29
 
 - Fixed a bug in temporal date objects

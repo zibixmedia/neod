@@ -3,7 +3,7 @@ neo4j connection/session/result wrapper
 
 ### ABOUT
 Neod creates a connections & session library and allows query and transactions with simple function calls. Neod also returns clean results in managable javascript objects.
-
+Visit our Homepage Community at: https://neo4j-enthusiasts.openhours.app/home
 
 ### Installation
 Install using NPM package manager.
