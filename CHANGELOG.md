@@ -1,3 +1,8 @@
+# 1.1.10 / 2021-11-17
+
+- Updated neo4j dependency to 4.4.0
+- Added Spatial Point Support
+
 # 1.1.9 / 2021-07-07
 
 - Updated neo4j dependency to 4.3.1

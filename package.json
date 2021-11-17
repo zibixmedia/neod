@@ -1,6 +1,6 @@
 {
     "name": "@zibix/neod",
-    "version": "1.1.9",
+    "version": "1.1.10",
     "description": "Neo4j Connector with Results Formatter",
     "homepage": "https://neo4j-enthusiasts.openhours.app/home",
     "license": "MIT",
@@ -10,7 +10,7 @@
         "neo4j"
     ],
     "dependencies": {
-        "neo4j-driver": "4.3.1",
-        "neo4j-driver-core": "4.3.1"
+        "neo4j-driver": "4.4.0",
+        "neo4j-driver-core": "4.4.0"
     }
 }

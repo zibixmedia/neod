@@ -16,7 +16,8 @@
  const neo4jdriver = require('neo4j-driver')
  const graphtypes = require('neo4j-driver-core/lib/graph-types.js')
  const temporaltypes = require('neo4j-driver-core/lib/temporal-types.js')
- 
+ const spatialtypes = require('neo4j-driver-core/lib/spatial-types.js')
+
  class neod {
  
      constructor () {
@@ -285,27 +286,27 @@
      
      scrubRabbitHole(results) {
          
-         if(temporaltypes.isDateTime(results) || temporaltypes.isDate(results) || temporaltypes.isLocalTime(results) || temporaltypes.isLocalDateTime(results) || temporaltypes.isTime(results) || temporaltypes.isDuration(results)){
+         if(spatialtypes.isPoint(results) || temporaltypes.isDateTime(results) || temporaltypes.isDate(results) || temporaltypes.isLocalTime(results) || temporaltypes.isLocalDateTime(results) || temporaltypes.isTime(results) || temporaltypes.isDuration(results)){
             
-             let temporal = {}
+             let neoobj = {} // temporal to neoobj
              Object.keys(results).forEach((key) => {
-                 temporal[key] = this.scrubRabbitHole(results[key])
+                neoobj[key] = this.scrubRabbitHole(results[key])
              })
              
              if(temporaltypes.isDateTime(results) || temporaltypes.isDate(results) || temporaltypes.isLocalDateTime(results)){
-                temporal['unixTZO'] = Date.UTC(
-                    temporal['year'], // year
-                    temporal['month'] - 1, // month
-                    temporal['day'], // day
-                    (temporal['hour']??0), // hour
-                    (temporal['minute']??0), // minute
-                    (temporal['second']??0), // second
-                    (temporal['nanosecond']??0) / 1000000
+                neoobj['unixTZO'] = Date.UTC(
+                    neoobj['year'], // year
+                    neoobj['month'] - 1, // month
+                    neoobj['day'], // day
+                    (neoobj['hour']??0), // hour
+                    (neoobj['minute']??0), // minute
+                    (neoobj['second']??0), // second
+                    (neoobj['nanosecond']??0) / 1000000
                 )
-                temporal['unixUTC'] = temporal['unixTZO'] - ((temporal['timeZoneOffsetSeconds']??0) * 1000)
+                neoobj['unixUTC'] = neoobj['unixTZO'] - ((neoobj['timeZoneOffsetSeconds']??0) * 1000)
             }
             
-            return temporal
+            return neoobj
          }
  
          // IS IT A NODE
